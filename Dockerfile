@@ -1,18 +1,12 @@
-# Flower
-#
-# VERSION 0.1
+FROM python:3.5
+MAINTAINER Craig Weber <crgwbr@gmail.com>
 
-FROM ubuntu:trusty
-MAINTAINER Igor Serko <igor.serko@gmail.com>
+# Install Flower
+ENV FLOWER_VERSION='0.9.1'
+RUN pip install flower==$FLOWER_VERSION && pip install redis
 
-# update the package repository and install python pip
-RUN apt-get -y update && apt-get -y install python-dev python-pip
-
-# installing flower
-RUN pip install flower
-
-# Make sure we expose port 5555 so that we can connect to it
+# Expose port 5555 so that we can connect to it
 EXPOSE 5555
 
-# Running flower
-ENTRYPOINT ["flower", "--port=5555"]
+# Run Flower
+CMD ["flower", "--port=5555"]
