@@ -1,4 +1,4 @@
-FROM python:3.5-alpine
+FROM python:3.5
 MAINTAINER Craig Weber <crgwbr@gmail.com>
 
 # Install Flower
